@@ -1,16 +1,22 @@
-# Week 1 - Project Environment Setup
+### Week 1 — 2026-06-15
 
-## What I did this week
-- Successfully registered and configured GitHub account.
-- Forked/Used the official `FURP-SEP-Template` to create the project repository.
-- Cloned the repository to the local machine using GitHub Desktop.
-- Configured Visual Studio Code with essential extensions (Python, Markdown All in One).
-- Initialized the repository structure according to the FURP handbook.
+**Attended this week's meeting:** Yes
 
-## Challenges & Blockers
-- None so far. The repository setup and VS Code initialization went smoothly following the handbook guidelines.
+**Progress this week**
+- Successfully registered and configured GitHub account and linked it with GitHub Desktop.
+- Forked and initialized the official `FURP-SEP-Template` repository under the correct 2026 naming convention (`FURP-2026-YUNKAI-CHOU-Mobile_Manipulator`).
+- Configured Visual Studio Code with critical extensions including Python and Markdown All in One.
+- Initialized the mandatory repository directory structure (`/docs`, `/src`, and `/docs/meeting_notes`).
 
-## Plan for next week
-- Read the cited paper and understand the mathematical foundation of Whole-Body Control (WBC).
-- Start learning the basics of Quadratic Programming (QP) optimization and task priority selection
-- Install the required simulation environment (such as MuJoCo or Isaac Gym) via Anaconda
+**Challenges & blockers**
+- **Git Workflow Friction:** Encountered an initial issue in GitHub Desktop where the "Commit" button was disabled because the mandatory `Summary` field was left blank. Resolved it by learning that Git strictly requires a clear description for every code changes save point.
+- **Directory Typos:** Accidentally misnamed several files during initialization (e.g., `REAMDE.md`, `meetinf_notes`), which required clean-up to ensure compliance with the repository layout standard.
+
+**Next steps**
+- Access and read the project's cited paper to grasp the mathematical foundation of Whole-Body Control (WBC) and the whole-body Jacobian matrix.
+- Follow the **Phase 1 (MoveIt Onboarding)** guidelines: locate the robot description URDF file in the `src/` directory to inspect its kinematic chains.
+- Install Anaconda to set up the Python virtualization environment required for future machine learning/RL control stacks.
+
+**Hours spent (optional):** 3h
+
+**Links (optional):** https://github.com/zyunkai127-oss/FURP-2026-YUNKAI-CHOU-Mobile_Manipulator
