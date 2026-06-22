@@ -50,9 +50,27 @@
   - *Resolution:* Opted for a direct file-based installation of the GPG key to bypass network-dependent GPG service failures, ensuring a more robust configuration on the virtualized system.
 
 
-**Next steps**
 
+**Hours spent (optional):** 10h
 
-**Hours spent (optional):** 3h
+**Links (optional):** https://github.com/zyunkai127-oss/FURP-2026-YUNKAI-CHOU-Mobile_Manipulator
+
+### Week 2 — 2026-06-22
+
+**Attended this week's meeting:** NO MEETING
+
+**Core Phases for This Week**
+- **Phase 1: Look at the Graph:** Run the official Python-based `talker` and `listener` demonstration nodes, and utilize the graphical tool `rqt_graph` to see exactly how they are connected in real-time.
+- **Phase 2: Deconstruct the System:** Launch the laboratory's ground robot simulation environment (Bringup), control it using the keyboard teleop, and observe the continuous data streams of odometry (`/odom`) and LiDAR (`/scan`).
+- **Phase 3: Inject Your Node:** Write your very first custom ROS2 Python package and node to implement a data-forwarding script, successfully achieving this week's practical milestone.
+
+**Plan for this week**
+* **Monday:** Execute the official Python-based `talker` and `listener` demonstration nodes, and utilize the `rqt_graph` tool to visualize the underlying node-to-topic computation graph topology.
+* **Tuesday:** Launch the ground robot simulation environment using `ros2 launch ground_robot bringup.launch.py`, and inspect the standard robot model and live 2D LiDAR laser scans within RViz2.
+* **Wednesday:** Activate the keyboard teleoperation node, echo the real-time odometry stream via `ros2 topic echo /odom`, and study the closed-loop motion system dynamics between velocity inputs and state outputs.
+* **Thursday:** Scaffold a custom ROS2 Python package named `week1_echo` utilizing the `ament_python` build type, and write a structured, object-oriented node that subscribes to an input topic and forwards data.
+* **Friday:** Compile the custom package using `colcon build`, source the workspace's local setup file, run the new node, and visually confirm its correct insertion into the computational network using `rqt_graph`.
+
+**Hours spent (optional):** 6h
 
 **Links (optional):** https://github.com/zyunkai127-oss/FURP-2026-YUNKAI-CHOU-Mobile_Manipulator
