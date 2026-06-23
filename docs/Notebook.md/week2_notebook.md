@@ -60,10 +60,12 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 
+```
 
-🧠 Component 2: Controller Node (control_node.py)
+### 🧠 Component 2: Controller Node (`control_node.py`)
 An event-driven script that runs string-parsing evaluations to execute critical safety braking commands.
 
+```python
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -103,10 +105,12 @@ def main(args=None):
 if __name__ == '__main__':
     main()
 
+```
 
+### 🛠️ Component 3: Build Tool Registry Configuration (`setup.py`)
+This configuration maps local Python file execution scopes directly into executable paths recognized by the ROS2 backend CLI parser tool layer.
 
-🛠️ Component 3: Build Tool Registry Configuration (setup.py)
-This configuration maps local Python file execution scopes directly into executable paths recognized by the ROS2 backend cli parser tool layer.
+```python
 from setuptools import setup
 
 package_name = 'week2_echo'
@@ -135,17 +139,22 @@ setup(
     },
 )
 
-📋 3. Standard Operating Procedure (SOP) Development Workflow
-Phase 1: Terminal Code Ingestion (No-GUI Text Editing)
+```
+
+## 📋 3. Standard Operating Procedure (SOP) Development Workflow
+
+### Phase 1: Terminal Code Ingestion (No-GUI Text Editing)
 To edit or deploy your python scripts directly without access to an interactive desktop GUI editor, leverage the native shell file stream redirection tool wrapper inside your Ubuntu bash window terminal:
 
+```python
 cat << 'EOF' > ~/mobile_manipulator_ws/src/week2_echo/week2_echo/sensor_node.py
-[Insert Raw Source Code Layout Here]
+# [Insert Raw Source Code Layout Here]
 EOF
-
-Phase 2: System Compilation Sweep
+```
+### Phase 2: System Compilation Sweep
 Every modification made within a package source block requires a rigid workspace build-refresh cycle:
 
+```python
 # Move to workspace root directory
 cd ~/mobile_manipulator_ws
 
@@ -155,14 +164,17 @@ colcon build --packages-select week2_echo
 # Refresh terminal environment path markers
 source install/setup.bash
 
-Phase 3: Distributed Execution Setup
+```
+
+### Phase 3: Distributed Execution Setup
 Open two separate bash shell sheets to trigger network data transmission streams:
-
-Sheet 1 (Sensor Stream):
-
+#### Sheet 1 (Sensor Stream)
+```python
 source ~/mobile_manipulator_ws/install/setup.bash
 ros2 run week2_echo run_sensor
-
-Sheet 2 (Control Logic Evaluation Brain):
+```
+#### Sheet 2 (Control Logic Evaluation Brain)
+```python
 source ~/mobile_manipulator_ws/install/setup.bash
 ros2 run week2_echo run_control
+```
