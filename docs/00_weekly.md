@@ -74,3 +74,33 @@
 **Hours spent (optional):** 6h
 
 **Links (optional):** https://github.com/zyunkai127-oss/FURP-2026-YUNKAI-CHOU-Mobile_Manipulator
+
+
+### Week 3 — 2026-07-05
+
+**Attended this week's meeting:** Yes
+
+**Progress this week**
+
+- Systematically debugged and resolved a critical Ubuntu APT repository conflict (GPG key configuration error) and VMware NAT network failure that blocked package installations
+- Repaired corrupted MoveIt environments by forcefully reinstalling core dependencies (`ros-humble-moveit-*` and `moveit_servo`) to resolve OMPL planner and controller manager plugin crashes
+- Created a custom ROS 2 Python package (`moveit_ee_tutorial`) following standard directory structures and `setup.py` configurations
+- Implemented a Cartesian pose control script (`move_to_pose.py`) utilizing `pymoveit2` and official ROS 2 `geometry_msgs/PoseStamped` messages
+- Successfully verified motion planning and Inverse Kinematics (IK) execution for the Panda arm in RViz2 using fake controllers (`ex_fake_control.launch.py`)
+
+**Challenges & blockers**
+
+- Dependency & APT Chain Reaction: A missing `moveit_servo` package exposed a corrupted `/etc/apt/sources.list` (raw PGP key injection), requiring grep-based searches and manual surgical removal to restore `apt update` functionality
+- Plugin Load Failures: OMPL and simple controller manager plugins crashed during launch, which was traced back to corrupted package installations and solved via a complete suite `--reinstall`
+- Namespace Mismatches: The MoveIt SRDF configuration defined the planning group as `"arm"`, while the initial script targeted `"panda_arm"`, causing communication failures; resolved by aligning the group names in the source code
+- API Versioning Traps: Encountered parameter deprecations in the third-party `pymoveit2` library (e.g., `end_effector_name` changes), bypassed by adopting the robust ROS 2 `PoseStamped` standard
+
+**Next steps**
+
+- Move towards Whole-Body Control (WBC) by exploring omni-directional mobile chassis kinematics
+- Implement and test collision-aware planning (adding obstacle primitives to the MoveIt planning scene)
+- Transition from RViz2 fake controllers to full physics simulation in Gazebo
+
+**Hours spent (optional):** approximately 12h
+
+**Links (optional):** [`src/moveit_ee_tutorial/moveit_ee_tutorial/move_to_pose.py`](../src/moveit_ee_tutorial/moveit_ee_tutorial/move_to_pose.py)
