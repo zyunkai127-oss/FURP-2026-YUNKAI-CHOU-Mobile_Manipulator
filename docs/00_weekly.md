@@ -104,3 +104,124 @@
 **Hours spent (optional):** approximately 12h
 
 **Links (optional):** [`src/moveit_ee_tutorial/moveit_ee_tutorial/move_to_pose.py`](../src/moveit_ee_tutorial/moveit_ee_tutorial/move_to_pose.py)
+
+### Week 5 — 2026-07-12
+
+**Attended this week's meeting:** Yes
+
+**Plan for this week**
+- Connect the Berxel HK100Q RGB-D camera to the Ubuntu 22.04 virtual machine and verify VMware USB passthrough.
+- Install and configure the official Berxel Linux SDK and ROS 2 driver.
+- Confirm the units and encoding of the depth-image data.
+- Convert selected depth-image pixels into three-dimensional coordinates using the camera intrinsic parameters.
+- Develop a manual Region of Interest (ROI) interface for selecting an object and estimating its 3D position.
+- Publish the estimated object position as a ROS 2 `PoseStamped` message for later TF2 and MoveIt integration.
+
+**Progress this week**
+
+- **Berxel HK100Q Hardware Integration:** Successfully connected the Berxel iHawk100/HK100Q camera to Ubuntu through VMware USB passthrough. The camera was recognized with USB ID `0603:000a`, with `/dev/video2` and `/dev/video3` device nodes available.
+
+- **SDK and ROS 2 Driver Setup:** Installed and configured Berxel Linux SDK 2.0.161 and built the Berxel ROS 2 driver workspace. The driver successfully published RGB, depth, camera information, and point-cloud data.
+
+- **Camera Configuration Correction:** Discovered that the launch file was loading `berxel_ihawk_100.yaml` instead of the required `berxel_ihawk_100Q.yaml`. Corrected the configuration and enabled RGB-depth alignment and point-cloud generation.
+
+- **Depth Format Verification:** Experimentally confirmed that the depth topic contains integer values in millimetres. For example, a raw value of `2299` represents `2299 mm = 2.299 m`. Therefore, the processing node was configured with `depth_mode:=millimeters` without applying an additional Q12.4 bit shift.
+
+- **Single-Pixel 3D Reconstruction:** Developed `depth_probe.py` to sample a `5 × 5` neighbourhood around a selected pixel, remove zero-depth values, calculate the median depth, convert millimetres to metres, and reconstruct the corresponding 3D point.
+
+- **Camera Intrinsic Calibration Usage:** Read the following intrinsic parameters from the ROS 2 `CameraInfo` message:
+
+```text
+fx = 391.3235
+fy = 391.3235
+cx = 320.8533
+cy = 202.9705
+```
+
+- **Pixel Back-Projection:** Used the pinhole-camera back-projection equations:
+
+```text
+X = (u - cx) × Z / fx
+Y = (v - cy) × Z / fy
+Z = depth
+```
+
+This converts a depth-image pixel `(u, v)` into a metric 3D position `(X, Y, Z)` in the camera optical frame.
+
+- **3D Point Publication:** Successfully published reconstructed points through `/object_point_camera` and the measured depth through `/depth_probe/depth_m`. A centre-image test produced:
+
+```yaml
+frame_id: berxel_camera/berxel_camera_depth_optical_frame
+
+point:
+  x: 0.000862
+  y: 0.000173
+  z: 2.299
+```
+
+Since the selected pixel was close to the camera principal point, the near-zero X and Y values were consistent with the expected geometry.
+
+- **Manual ROI Pose Estimator:** Developed `manual_roi_pose_estimator.py` and `manual_roi_pose_estimator.launch.py`. The node allows the user to draw a bounding box around a target object, samples the central 40% of the ROI, removes invalid depth measurements, calculates the median depth, and converts the ROI centre into a 3D position.
+
+- **Non-Blocking User Interface:** Implemented the OpenCV ROI interface in a separate thread so that object selection does not block the ROS 2 RGB-D callbacks.
+
+- **ROS 2 Visualization Outputs:** The manual ROI node successfully publishes:
+
+```text
+/selected_object_pose_camera
+/manual_roi/debug_image
+/selected_object_marker
+```
+
+The interface supports:
+
+```text
+s: Select an ROI
+r: Clear the current ROI
+q: Close the node
+```
+
+- **Manual ROI Validation:** Successfully tested the complete manual-selection pipeline with the following result:
+
+```text
+Pixel: (294, 294)
+Depth: 0.512 m
+XYZ: (-0.035, 0.119, 0.512) m
+Frame: berxel_camera/berxel_camera_depth_optical_frame
+```
+
+The manually calculated position matched the program output. The result indicates that the selected point was approximately `3.5 cm` to the left of the optical axis, `11.9 cm` below it, and `51.2 cm` in front of the camera.
+
+- **Python Environment Repair:** Resolved a NumPy ABI incompatibility caused by NumPy 2.2.6, which prevented Ubuntu Matplotlib, ROS 2 `cv_bridge`, and Ultralytics from operating together. The environment was stabilized using NumPy 1.26.4 and OpenCV 4.11.0.
+
+- **Project Storage Correction:** Moved the Windows copy of the project outside OneDrive to avoid synchronization conflicts and retained the active Ubuntu ROS 2 package at `~/ros2_ws/src/eye_to_hand_grasp_demo`.
+
+**Challenges & blockers**
+
+- **Incorrect Camera Configuration:** The ROS 2 launch file initially loaded the configuration for the iHawk100 instead of the HK100Q. This prevented reliable RGB-depth correspondence. The issue was resolved by changing the configuration to `berxel_ihawk_100Q.yaml` and enabling alignment.
+
+- **Depth-Encoding Ambiguity:** It was initially unclear whether the depth values represented millimetres or Q12.4 fixed-point data. Direct measurement and comparison confirmed that the driver publishes integer millimetres, preventing an incorrect additional bit shift.
+
+- **Invalid and Noisy Depth Values:** Individual depth pixels occasionally contained zeros or unstable measurements. This was addressed by sampling a local neighbourhood or the central ROI area, rejecting invalid values, and using the median instead of a single measurement.
+
+- **Python ABI Conflict:** NumPy 2.2.6 was incompatible with ROS 2 packages compiled against the NumPy 1.x ABI. Downgrading to NumPy 1.26.4 restored compatibility with `cv_bridge`, Matplotlib, OpenCV, and Ultralytics.
+
+- **Blocking ROI Interface:** Running the OpenCV GUI in the main execution path risked blocking incoming image callbacks. The GUI was moved to a dedicated thread to preserve continuous RGB-D processing.
+
+- **OneDrive Path Interference:** The Windows Desktop directory had been redirected through OneDrive, creating a risk of file synchronization and path conflicts. The actual project was moved to a local non-OneDrive location, with only a shortcut retained on the visible desktop.
+
+**Next steps**
+
+- Measure targets at several known distances using a ruler and quantify the depth error, repeatability, and stability of the estimated 3D coordinates.
+- Test how the estimation accuracy changes when the object is located near the centre and edges of the image.
+- Integrate Ultralytics YOLO to replace the manual ROI with automatic object detection while reusing the existing depth-filtering and back-projection modules.
+- Configure TF2 to transform the detected pose from `berxel_camera/berxel_camera_depth_optical_frame` into the Panda robot base frame, `panda_link0`.
+- Publish and verify the transformed target pose in RViz2.
+- Send the base-frame target pose to MoveIt for inverse kinematics, collision-aware motion planning, and physical grasp execution.
+
+**Hours spent (optional):** Approximately 15h
+
+**Links (optional):**
+- [`depth_probe.py`](../src/eye_to_hand_grasp_demo/eye_to_hand_grasp_demo/depth_probe.py)
+- [`manual_roi_pose_estimator.py`](../src/eye_to_hand_grasp_demo/eye_to_hand_grasp_demo/manual_roi_pose_estimator.py)
+- [`manual_roi_pose_estimator.launch.py`](../src/eye_to_hand_grasp_demo/launch/manual_roi_pose_estimator.launch.py)

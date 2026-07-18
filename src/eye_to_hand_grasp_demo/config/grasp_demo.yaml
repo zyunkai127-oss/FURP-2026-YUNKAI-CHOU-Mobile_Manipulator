@@ -1,0 +1,24 @@
+eye_to_hand_grasp_demo:
+  ros__parameters:
+    camera_frame: camera_color_optical_frame
+    base_frame: panda_link0
+    arm_group: arm
+    gripper_group: gripper
+    end_effector_link: panda_hand_tcp
+
+    # A manually supplied detection in the fixed camera's optical frame.
+    # With the transform in demo.launch.py this becomes [0.50, 0.20, 0.09] m.
+    object_position_camera: [0.0, 0.0, 1.084481443]
+    object_size: [0.05, 0.05, 0.18]
+
+    # panda_hand_tcp is the finger contact centre.
+    grasp_z_offset: 0.0
+    approach_distance: 0.15
+    lift_distance: 0.20
+
+    # Top-down orientation for panda_hand_tcp, quaternion [x, y, z, w].
+    grasp_quaternion_xyzw: [1.0, 0.0, 0.0, 0.0]
+    home_joint_positions: [0.0, -0.785398, 0.0, -2.356194, 0.0, 1.570796, 0.785398]
+    max_velocity: 0.25
+    max_acceleration: 0.25
+    execute: true
