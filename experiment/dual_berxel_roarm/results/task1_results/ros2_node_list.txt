@@ -1,0 +1,2 @@
+/ihawk1/ihawk1_camera
+/ihawk2/ihawk2_camera

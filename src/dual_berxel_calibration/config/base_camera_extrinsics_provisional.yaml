@@ -1,0 +1,58 @@
+status: provisional_unverified_partner_board_to_robot
+parent_frame_assumption: base_link
+critical_assumption: Partner robot XYZ is treated as ROS base_link and the board has
+  been restored to the partner calibration pose.
+base_T_board:
+  translation_m:
+    x: 0.09240975621973394
+    y: -0.07308398092277175
+    z: -0.11793741092594238
+  rotation_xyzw:
+    x: 0.7462191404678507
+    y: 0.6656567101735809
+    z: 0.0026167329290924255
+    w: 0.007161795102164502
+base_T_ihawk1_color_optical_frame:
+  translation_m:
+    x: 0.5013406703017191
+    y: 0.3622130320575838
+    z: 0.24509383488888975
+  rotation_xyzw:
+    x: 0.31168904555324695
+    y: 0.8003887561968487
+    z: -0.4782006752192335
+    w: -0.18317175561651644
+base_T_ihawk2_color_optical_frame:
+  translation_m:
+    x: 0.563876299485983
+    y: -0.05788235653641305
+    z: 0.23953613106996036
+  rotation_xyzw:
+    x: 0.6441710311053082
+    y: 0.5654146111534889
+    z: -0.33582360147362206
+    w: -0.39060531086015576
+base_T_ihawk2_direct_from_board_for_check:
+  translation_m:
+    x: 0.5644598090531332
+    y: -0.057393934469801296
+    z: 0.24159277209657026
+  rotation_xyzw:
+    x: 0.6417474811482715
+    y: 0.5666643931698975
+    z: -0.3412556756473923
+    w: -0.3880672619426722
+dual_camera_chain_check:
+  translation_difference_mm: 2.192900326609539
+  rotation_difference_deg: 0.7547820623342878
+partner_affine_diagnostics:
+  raw_board_x_scale: 0.9731493384092352
+  raw_board_y_scale: 0.9911318345800193
+  normalized_axis_dot: -0.008668298818334627
+  historical_fit_3d_rmse_mm: 2.0252493578951407
+  historical_manual_repeatability_3d_rmse_mm: 3.2697901510048655
+pose_samples_per_camera: 100
+warning:
+- Do not use for autonomous low-height motion.
+- Validate with Robot TCP at independent board points.
+- Recompute if board, robot base, or cameras move.

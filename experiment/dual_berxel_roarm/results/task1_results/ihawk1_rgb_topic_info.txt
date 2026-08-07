@@ -1,0 +1,20 @@
+Type: sensor_msgs/msg/CompressedImage
+
+Publisher count: 1
+
+Node name: ihawk1_camera
+Node namespace: /ihawk1
+Topic type: sensor_msgs/msg/CompressedImage
+Endpoint type: PUBLISHER
+GID: 01.10.41.69.5e.d9.ff.da.9c.3d.bb.5b.00.00.18.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: BEST_EFFORT
+  History (Depth): UNKNOWN
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 0
+

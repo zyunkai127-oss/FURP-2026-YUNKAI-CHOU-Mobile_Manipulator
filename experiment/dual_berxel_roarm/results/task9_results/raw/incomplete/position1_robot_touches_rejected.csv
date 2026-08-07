@@ -1,0 +1,2 @@
+repeat,x_mm,y_mm,z_mm,tilt_deg,roll_deg,rejection_reason
+B_attempt1,237.227896,-17.1331389,-77.47785947,88.06640622356302,5.712890612820827,roll_out_of_range
