@@ -1,0 +1,19 @@
+{
+  "mode": "camera1_only_restart",
+  "topic": "/ihawk1/depth/depth_raw",
+  "frames": 100,
+  "roi": {
+    "center_x": 200,
+    "center_y": 340,
+    "size": 20
+  },
+  "mean_invalid_ratio": 0.0,
+  "mean_frame_median_mm": 491.16,
+  "mean_frame_std_mm": 8.62475183524365,
+  "mean_frame_mad_mm": 7.16,
+  "overall_mean_mm": 492.974425,
+  "overall_median_mm": 491.0,
+  "overall_std_mm": 8.625188167186558,
+  "overall_min_mm": 476.0,
+  "overall_max_mm": 508.0
+}

@@ -1,0 +1,47 @@
+status: three_point_corrected_one_point_validated
+parent_frame: base_link
+base_T_board:
+  translation_m:
+    x: 0.0920928222
+    y: -0.0973238049
+    z: -0.109635522
+  rotation_xyzw:
+    x: 0.7453303504
+    y: 0.6642510985
+    z: -0.049992408
+    w: -0.0274573506
+base_T_ihawk1_color_optical_frame:
+  translation_m:
+    x: 0.543139255
+    y: 0.3434490743
+    z: 0.1916551214
+  rotation_xyzw:
+    x: 0.28356156
+    y: 0.7827647848
+    z: -0.5038852795
+    w: -0.2301559438
+base_T_ihawk2_color_optical_frame:
+  translation_m:
+    x: 0.6043559527
+    y: -0.0768407162
+    z: 0.1861110793
+  rotation_xyzw:
+    x: 0.6259837936
+    y: 0.5363969986
+    z: -0.3801877032
+    w: -0.4193803291
+calibration:
+  fit_points:
+  - A(100,50)
+  - B(175,50)
+  - D(0,100)
+  fit_rmse_mm: 4.3266
+  validation_point: C(150,100)
+  validation_error_xyz_mm:
+    x: 1.2718
+    y: 0.8136
+    z: 5.3651
+  validation_3d_error_mm: 5.5734
+warning:
+- Do not move either camera or robot base.
+- Repeat calibration if higher than 5 mm absolute accuracy is required.

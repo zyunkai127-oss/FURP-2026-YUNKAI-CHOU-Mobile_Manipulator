@@ -1,0 +1,7 @@
+Experiment: Week 8 Task 9
+Target: ArUco DICT_4X4_50 ID 4
+Samples per position: 30
+Robot reference repeats per position: 3
+Coordinate frame: base_link
+Current independent robot-referenced accuracy: approximately 10 mm
+Autonomous grasping: disabled

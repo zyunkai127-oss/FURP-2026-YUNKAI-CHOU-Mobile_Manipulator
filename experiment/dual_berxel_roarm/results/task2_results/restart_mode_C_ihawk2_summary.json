@@ -1,0 +1,19 @@
+{
+  "mode": "dual_on_ihawk2",
+  "topic": "/ihawk2/depth/depth_raw",
+  "frames": 100,
+  "roi": {
+    "center_x": 140,
+    "center_y": 320,
+    "size": 20
+  },
+  "mean_invalid_ratio": 0.0,
+  "mean_frame_median_mm": 485.0,
+  "mean_frame_std_mm": 7.96130933303053,
+  "mean_frame_mad_mm": 6.11,
+  "overall_mean_mm": 485.344275,
+  "overall_median_mm": 485.0,
+  "overall_std_mm": 7.964389475934423,
+  "overall_min_mm": 471.0,
+  "overall_max_mm": 502.0
+}

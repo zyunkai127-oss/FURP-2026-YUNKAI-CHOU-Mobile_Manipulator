@@ -225,3 +225,54 @@ The manually calculated position matched the program output. The result indicate
 - [`depth_probe.py`](../src/eye_to_hand_grasp_demo/eye_to_hand_grasp_demo/depth_probe.py)
 - [`manual_roi_pose_estimator.py`](../src/eye_to_hand_grasp_demo/eye_to_hand_grasp_demo/manual_roi_pose_estimator.py)
 - [`manual_roi_pose_estimator.launch.py`](../src/eye_to_hand_grasp_demo/launch/manual_roi_pose_estimator.launch.py)
+
+---
+
+## Week ending 7 August 2026 — Dual iHawk calibration, fusion and RoArm approach
+
+**Completed**
+
+- Brought up two serial-bound Berxel iHawk100 RGB-D cameras and measured their
+  rates, intrinsics, TF trees, and RGB timestamp skew.
+- Verified that simultaneous depth streaming did not materially degrade a
+  controlled 20 × 20 ROI.
+- Built and validated a rigid 9 × 7 checkerboard plus four-ID orientation
+  target; both cameras detected all 48 inner corners below 1 px reprojection
+  error.
+- Calibrated the dual-camera transform with 30 diverse board poses and
+  validated three independent board locations below 2 mm mean 3-D error.
+- Implemented ID-4 RGB-D localization, camera-frame back-projection, base-frame
+  transforms, empirical inter-camera correction, buffered time matching, and
+  inverse-variance fusion.
+- Connected the RoArm M3 over CP210x serial, captured fused/robot point pairs,
+  fitted a rigid fused-to-robot correction, and tested an independent point.
+- Implemented accuracy recording, an annotated marker viewer, and supervised
+  guarded approach variants ending 20 mm or 10 mm above the marker.
+
+**Key results**
+
+- Improved camera extrinsic fit: 2.081 mm translation RMSE, 0.202° rotation RMSE.
+- Static fused-point repeatability: 0.387 mm 3-D RMSE, 0.548 mm maximum.
+- Six-point fused-to-RoArm fit: 6.322 mm RMSE, 9.480 mm maximum residual.
+- Independent/local robot-referenced checks: approximately 9.6–12.0 mm error.
+
+**Problems resolved**
+
+- Standardized CycloneDDS/localhost environments across every terminal and
+  repaired stale daemon, participant-index, QoS, and workspace-overlay issues.
+- Replaced single-message RGB/depth pairing with nearest-timestamp buffers.
+- Connected previously separate camera and `base_link` TF trees and retained an
+  explicitly labelled calibration fallback.
+- Distinguished marker occlusion from ROS communication failure using a live
+  annotated viewer.
+
+**Limitation and next step**
+
+The sub-millimetre repeatability does not remove the approximately 10–12 mm
+absolute robot bias. The present system is suitable only for supervised
+coordinate testing. The next calibration should use more non-coplanar points,
+a mechanically defined TCP, consistent tilt/roll, and held-out workspace
+validation before autonomous low-clearance grasping.
+
+Full procedures, equations, raw evidence, and troubleshooting are documented
+in [`dual_berxel_roarm`](dual_berxel_roarm/README.md).

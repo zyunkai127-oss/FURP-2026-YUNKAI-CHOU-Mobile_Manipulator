@@ -1,0 +1,28 @@
+Target marker corrected position mm:
+x=280.7329855
+y=-0.8513102
+z=-75.4431405
+
+Planned safe point mm:
+x=280.733
+y=-0.851
+z=-25.443
+
+Actual robot pose mm:
+x=279.2835921
+y=-11.57384166
+z=-25.48107868
+
+Actual orientation deg:
+tilt=87.36328124
+roll=0.35156249
+
+Safe-point error mm:
+dx=-1.4494079
+dy=-10.7228417
+dz=-0.0380787
+3d_error=10.82
+
+Result:
+PASS for 50 mm guarded pre-approach.
+NOT approved for automatic surface contact.

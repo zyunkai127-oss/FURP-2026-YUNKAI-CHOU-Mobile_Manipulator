@@ -1,0 +1,21 @@
+parent_frame: ihawk1/berxel_camera_color_optical_frame
+child_frame: ihawk2/berxel_camera_color_optical_frame
+translation:
+  x: -0.3293605621204492
+  y: -0.12120396338973724
+  z: 0.23927588237319886
+rotation:
+  x: 0.002161243697770193
+  y: 0.4124385961606899
+  z: 0.2140793851339675
+  w: 0.8854714847375611
+calibration_samples_total: 30
+calibration_samples_used: 28
+translation_rmse_m: 0.0020811789263422836
+translation_max_residual_m: 0.0040386347040491325
+rotation_rmse_deg: 0.20166228990388665
+rotation_max_residual_deg: 0.36785257932560234
+mean_timestamp_skew_ms: 4.589080810546875
+max_timestamp_skew_ms: 16.70384407043457
+translation_outlier_limit_m: 0.0045990420145018435
+rotation_outlier_limit_deg: 0.4612394496841764

@@ -1,0 +1,18 @@
+Current operating mode: provisional Position-1-only validation
+
+Accepted dataset:
+- raw/position1_redo.csv
+- raw/position1_redo_robot_touches.csv
+
+Observed Position 1 accuracy:
+- Robot-corrected mean 3D error: 12.03 mm
+- Robot-corrected RMSE: 12.03 mm
+- Maximum observed error: 12.53 mm
+
+Excluded from current acceptance:
+- Position 2 (diagnostic only, 18.76 mm RMSE)
+
+Limitations:
+- Accuracy is not validated across the full robot workspace.
+- Do not use for autonomous low-height contact or precision grasping.
+- Additional spatial calibration samples are required later.

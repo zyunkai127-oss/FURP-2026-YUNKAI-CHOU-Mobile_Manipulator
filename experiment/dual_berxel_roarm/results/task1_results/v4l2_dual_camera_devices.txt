@@ -1,0 +1,10 @@
+Berxel iHawk100 (usb-0000:03:00.0-2):
+	/dev/video0
+	/dev/video1
+	/dev/media0
+
+Berxel iHawk100 (usb-0000:03:00.0-4.1):
+	/dev/video2
+	/dev/video3
+	/dev/media1
+
