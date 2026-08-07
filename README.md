@@ -17,6 +17,7 @@ RoArm M3 integration completed in August 2026.
 
 - [System overview and quick start](docs/dual_berxel_roarm/README.md)
 - [Task 1–10 execution record](docs/dual_berxel_roarm/TASKS_01_10.md)
+- [Task 1–10 complete Chinese technical report](docs/dual_berxel_roarm/COMPLETE_TASK1_10_REPORT.md)
 - [Mathematics and calibration derivation](docs/dual_berxel_roarm/MATHEMATICS.md)
 - [Troubleshooting and known limitations](docs/dual_berxel_roarm/TROUBLESHOOTING.md)
 - [Code and data inventory](docs/dual_berxel_roarm/DATA_AND_CODE.md)

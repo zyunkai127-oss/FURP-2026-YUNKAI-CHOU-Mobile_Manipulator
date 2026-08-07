@@ -7,6 +7,10 @@ depth observation into `base_link`, corrects the systematic disagreement
 between the cameras, fuses the two estimates, maps the fused point into the
 RoArm coordinate convention, and performs a supervised guarded approach.
 
+For the complete Chinese Task 1–10 narrative, equations, TF explanation,
+problems, solutions, final matrices, and direct training-data links, see
+[Task 1–10 完整技術報告](COMPLETE_TASK1_10_REPORT.md).
+
 ```text
 iHawk RGB + depth
         │
