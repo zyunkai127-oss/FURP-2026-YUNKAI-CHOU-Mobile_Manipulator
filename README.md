@@ -10,6 +10,19 @@
 | Team or individual | Individual |
 | Cited paper being replicated | (XXXXXXX) |
 
+## Research outcome — Showcase poster & manuscript (Sep–Oct 2026)
+
+**When Is 3D Worth It? Task-Conditioned Adequacy of Planar Localisation for
+Vision-Guided Manipulation.** A closed-form model of off-plane planar
+localisation error (E_geom = |h|ρ / |Cz − h|) was validated blindly on a
+dual-RGB-D setup (5 rebuilds × 2 cameras, 0–50 mm; height-curve r =
+0.9942–0.9951) and combined with a separately declared real-system error bound
+to decide when planar localisation is sufficient for a task tolerance τ.
+
+- [Final showcase poster (`FURP_Showcase.pdf`)](FURP_Showcase.pdf)
+- [Research summary, results and limitations](docs/research_paper/README.md)
+- [Working manuscript v0.1](docs/research_paper/manuscript_v0.1_WORKING_DRAFT.pdf)
+
 ## 2026 dual-camera mobile-manipulator integration
 
 This repository now includes the reproducible Berxel iHawk100 dual-camera and

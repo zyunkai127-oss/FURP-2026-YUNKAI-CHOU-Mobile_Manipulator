@@ -276,3 +276,35 @@ validation before autonomous low-clearance grasping.
 
 Full procedures, equations, raw evidence, and troubleshooting are documented
 in [`dual_berxel_roarm`](dual_berxel_roarm/README.md).
+
+## Sep–Oct 2026 — Research paper, closest-work positioning and Showcase poster
+
+**Progress**
+
+- Reframed the project from "which method is more accurate" to
+  **task-conditioned model adequacy**: when is planar localisation sufficient
+  for a declared task tolerance, and when is 3D required?
+- Derived the closed-form off-plane error model E_geom = |h|ρ / |Cz − h| and the
+  adequacy conditions E_geom + S_P ≤ τ (planar) and S_3D ≤ τ (3D).
+- Completed blind E2 validation (5 rebuilds × 2 cameras, h = 0–50 mm, no
+  off-plane fitting), the Stage 3 residual/measurement-uncertainty audit and an
+  external STAR-loc structural validation.
+- Ran a targeted closest-work audit (positioning v1.1, 2026-09-28); closest
+  neighbour is Carlson's "Flatland Revisited" (ICRA 2025 workshop).
+- Wrote manuscript working draft v0.1 and produced the final FoSE UG/PGT
+  Showcase poster (`FURP_Showcase.pdf`).
+
+**Key results**
+
+- E2 height-curve r = 0.9942–0.9951; point-level magnitude r = 0.9869–0.9942;
+  median direction cosine 0.9983–0.9992.
+- Geometry-unexplained residual RMSE 3.61–4.36 mm vs measurement-only Q95
+  0.024–0.266 mm.
+- STAR-loc: 12,473 observations, Spearman 0.981, median direction cosine 0.998.
+
+**Next step**
+
+Fill manuscript TODOs (authors, E2 protocol tables, final Figures 2/3/5),
+re-freeze positioning v1.1, and present the poster at the Showcase.
+
+Details: [`research_paper`](research_paper/README.md).
