@@ -8,6 +8,9 @@ dual-camera / RoArm platform documented in [`../dual_berxel_roarm`](../dual_berx
 | Showcase poster (final) | [`/FURP_Showcase.pdf`](../../FURP_Showcase.pdf) · [editable .pptx](../poster/Research_Poster_Final.pptx) |
 | Working manuscript v0.1 (not final) | [`manuscript_v0.1_WORKING_DRAFT.pdf`](manuscript_v0.1_WORKING_DRAFT.pdf) |
 | Positioning / closest-work audit v1.1 | [`positioning_v1.1_closest_work_DRAFT.pdf`](positioning_v1.1_closest_work_DRAFT.pdf) |
+| Editable Word sources | [manuscript .docx](manuscript_v0.1_WORKING_DRAFT.docx) · [positioning .docx](positioning_v1.1_closest_work_DRAFT.docx) |
+| Earlier poster version / official template | [V3 .pptx](../poster/Research_Poster_V3_Completed.pptx) · [template .pptx](../poster/Poster_Template_2026_FoSE_Showcase.pptx) / [.pdf](../poster/Poster_Template_2026_FoSE_Showcase.pdf) |
+| Programme reference material | [FURP SEP handbook](../reference/FURP_SEP_Handbook.pdf) · [ROS 2 handbook](../reference/ROS2_handbook.pdf) · [GitHub repo tutorial](../reference/GitHub-repo-tutorial.pdf) |
 | Poster narrative discussion v2 | [`../poster/Research_Poster_Manuscript_Discussion_v2.pdf`](../poster/Research_Poster_Manuscript_Discussion_v2.pdf) |
 
 ## Research question
