@@ -16,7 +16,7 @@ with the CP210x device at `/dev/ttyUSB0`, 115200 baud.
 
 ## Experimental evidence
 
-All imported evidence is under `experiment/dual_berxel_roarm/results`:
+All imported evidence is under `experiments/dual_berxel_roarm/results`:
 
 | Directory | Contents |
 | --- | --- |
